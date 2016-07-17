@@ -1,0 +1,98 @@
+Started by user admin
+Building in workspace C:\Users\Michael_L\.jenkins\workspace\NewTest
+Cloning the remote Git repository
+Cloning repository c:/eclipse/workspace/Jenkins/.git
+ > git.exe init C:\Users\Michael_L\.jenkins\workspace\NewTest # timeout=10
+Fetching upstream changes from c:/eclipse/workspace/Jenkins/.git
+ > git.exe --version # timeout=10
+ > git.exe -c core.askpass=true fetch --tags --progress c:/eclipse/workspace/Jenkins/.git +refs/heads/*:refs/remotes/origin/*
+ > git.exe config remote.origin.url c:/eclipse/workspace/Jenkins/.git # timeout=10
+ > git.exe config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git.exe config remote.origin.url c:/eclipse/workspace/Jenkins/.git # timeout=10
+Fetching upstream changes from c:/eclipse/workspace/Jenkins/.git
+ > git.exe -c core.askpass=true fetch --tags --progress c:/eclipse/workspace/Jenkins/.git +refs/heads/*:refs/remotes/origin/*
+ > git.exe rev-parse "refs/remotes/origin/master^{commit}" # timeout=10
+ > git.exe rev-parse "refs/remotes/origin/origin/master^{commit}" # timeout=10
+Checking out Revision 7ab3a0738a174ae57a169a437c48515fdb548e11 (refs/remotes/origin/master)
+ > git.exe config core.sparsecheckout # timeout=10
+ > git.exe checkout -f 7ab3a0738a174ae57a169a437c48515fdb548e11
+ > git.exe rev-list b4ceefa0f6360a0f36933665fcfee473c4335782 # timeout=10
+[NewTest] $ cmd.exe /C "ant.bat && exit %%ERRORLEVEL%%"
+Buildfile: C:\Users\Michael_L\.jenkins\workspace\NewTest\build.xml
+
+init:
+
+compile:
+    [javac] C:\Users\Michael_L\.jenkins\workspace\NewTest\build.xml:36: warning: 'includeantruntime' was not set, defaulting to build.sysclasspath=last; set to false for repeatable builds
+    [javac] Compiling 1 source file to C:\Users\Michael_L\.jenkins\workspace\NewTest\build
+
+dist:
+      [jar] Building jar: C:\Users\Michael_L\.jenkins\workspace\NewTest\dist\lib\jenkins_ant_build_jar-20160717.jar
+
+BUILD SUCCESSFUL
+Total time: 1 second
+[CHECKSTYLE] Collecting checkstyle analysis files...
+[CHECKSTYLE] Finding all files that match the pattern checkstyle.xml
+[CHECKSTYLE] Parsing 1 file in C:\Users\Michael_L\.jenkins\workspace\NewTest
+[CHECKSTYLE] Parsing of file C:\Users\Michael_L\.jenkins\workspace\NewTest\checkstyle.xml failed due to an exception:
+
+java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:79)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at java.net.Socket.connect(Socket.java:528)
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:180)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:378)
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:473)
+	at sun.net.www.http.HttpClient.<init>(HttpClient.java:203)
+	at sun.net.www.http.HttpClient.New(HttpClient.java:290)
+	at sun.net.www.http.HttpClient.New(HttpClient.java:306)
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:995)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:931)
+	at sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:849)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1299)
+	at org.apache.commons.digester3.Digester.createInputSourceFromURL(Digester.java:1992)
+	at org.apache.commons.digester3.Digester.resolveEntity(Digester.java:1509)
+	at com.sun.org.apache.xerces.internal.util.EntityResolverWrapper.resolveEntity(EntityResolverWrapper.java:110)
+	at com.sun.org.apache.xerces.internal.impl.XMLEntityManager.resolveEntityAsPerStax(XMLEntityManager.java:974)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$DTDDriver.dispatch(XMLDocumentScannerImpl.java:1151)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$DTDDriver.next(XMLDocumentScannerImpl.java:1049)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$PrologDriver.next(XMLDocumentScannerImpl.java:962)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:607)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:489)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:835)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:764)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:123)
+	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(AbstractSAXParser.java:1210)
+	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(SAXParserImpl.java:568)
+	at org.apache.commons.digester3.Digester.parse(Digester.java:1642)
+	at org.apache.commons.digester3.Digester.parse(Digester.java:1745)
+	at hudson.plugins.checkstyle.parser.CheckStyleParser.parse(CheckStyleParser.java:67)
+	at hudson.plugins.analysis.core.AbstractAnnotationParser.parse(AbstractAnnotationParser.java:54)
+	at hudson.plugins.analysis.core.FilesParser.parseFile(FilesParser.java:325)
+	at hudson.plugins.analysis.core.FilesParser.parseFiles(FilesParser.java:283)
+	at hudson.plugins.analysis.core.FilesParser.parserCollectionOfFiles(FilesParser.java:234)
+	at hudson.plugins.analysis.core.FilesParser.invoke(FilesParser.java:203)
+	at hudson.plugins.analysis.core.FilesParser.invoke(FilesParser.java:31)
+	at hudson.FilePath.act(FilePath.java:1018)
+	at hudson.FilePath.act(FilePath.java:996)
+	at hudson.plugins.checkstyle.CheckStylePublisher.perform(CheckStylePublisher.java:85)
+	at hudson.plugins.analysis.core.HealthAwarePublisher.perform(HealthAwarePublisher.java:68)
+	at hudson.plugins.analysis.core.HealthAwareRecorder.perform(HealthAwareRecorder.java:280)
+	at hudson.tasks.BuildStepCompatibilityLayer.perform(BuildStepCompatibilityLayer.java:78)
+	at hudson.tasks.BuildStepMonitor$1.perform(BuildStepMonitor.java:20)
+	at hudson.model.AbstractBuild$AbstractBuildExecution.perform(AbstractBuild.java:779)
+	at hudson.model.AbstractBuild$AbstractBuildExecution.performAllBuildSteps(AbstractBuild.java:720)
+	at hudson.model.Build$BuildExecution.post2(Build.java:185)
+	at hudson.model.AbstractBuild$AbstractBuildExecution.post(AbstractBuild.java:665)
+	at hudson.model.Run.execute(Run.java:1766)
+	at hudson.model.FreeStyleBuild.run(FreeStyleBuild.java:43)
+	at hudson.model.ResourceController.execute(ResourceController.java:98)
+	at hudson.model.Executor.run(Executor.java:410)
+
+Finished: SUCCESS
