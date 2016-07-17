@@ -9,6 +9,20 @@
   <property name="build" location="build"/>
   <property name="dist" location="dist"/>
 
+	<target name="pmd">
+	 <taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask"/>
+	 <pmd shortFilenames="true">
+	  <ruleset>rulesets/favorites.xml</ruleset>
+	  <ruleset>basic</ruleset>
+	  <formatter type="xml" toFile="pmd_report.xmll"/>
+	  <fileset dir="/src">
+	   <include name="java/lang/*.java"/>
+	  </fileset>
+	 </pmd>
+	</target>
+	
+	
+	
   <target name="init">
     <!-- Create the time stamp -->
     <tstamp/>
